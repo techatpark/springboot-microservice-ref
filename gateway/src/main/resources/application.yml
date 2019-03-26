@@ -1,0 +1,14 @@
+server:
+  port: 8085
+zuul:
+  routes:
+    product-search-service:
+      path: /**
+      serviceId: product-search-service
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
