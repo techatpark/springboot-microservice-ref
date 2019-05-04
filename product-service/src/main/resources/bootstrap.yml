@@ -1,6 +1,8 @@
 spring:
   application:
-    name: product-search-service
+    name: product-service
+#server:
+#  port: ${PORT:0}    
   cloud:
     consul:
       host: localhost

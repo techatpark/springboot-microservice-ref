@@ -7,9 +7,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <name>Product Search Service</name>
+    <name>Store Service</name>
     <groupId>org.springboot.microservice</groupId>
-    <artifactId>product-search-service</artifactId>
+    <artifactId>store-service</artifactId>
 
     <dependencies>
         

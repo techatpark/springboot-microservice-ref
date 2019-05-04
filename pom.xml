@@ -26,7 +26,8 @@
 
 
     <modules>
-        <module>product-search-service</module>
+        <module>product-service</module>
+        <module>store-service</module>
         <module>gateway</module>
     </modules>
   

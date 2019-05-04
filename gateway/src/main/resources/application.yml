@@ -2,9 +2,12 @@ server:
   port: 8085
 zuul:
   routes:
-    product-search-service:
-      path: /**
-      serviceId: product-search-service
+    product-service:
+      path: /api/products/**
+      serviceId: product-service
+    store-service:
+      path: /api/stores/**
+      serviceId: store-service  
 feign:
   client:
     config:

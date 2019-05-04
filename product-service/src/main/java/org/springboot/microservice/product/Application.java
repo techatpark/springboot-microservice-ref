@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springboot.microservice.productsearch;
+package org.springboot.microservice.product;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
