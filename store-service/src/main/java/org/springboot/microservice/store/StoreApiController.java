@@ -14,14 +14,7 @@ import reactor.core.publisher.Mono;
 @RestController("/api/stores")
 public class StoreApiController {
     
-    @Autowired
-    private WebClient.Builder webClientBuilder;
 
-    @GetMapping("/call_product")
-    public Mono<String> helloProduct() {
-        Mono<String> pres = webClientBuilder.build().get().uri("http://product-service/api/products").retrieve().bodyToMono(String.class);
-        return pres;
-    }
 
     @GetMapping()
     public Mono<String> hello() {
@@ -32,4 +25,13 @@ public class StoreApiController {
 //    public void restart(@PathVariable("env") String env) {
 //        Application.restart(env);
 //    } 
+    
+        @Autowired
+    private WebClient.Builder webClientBuilder;
+
+    @GetMapping("/call_product")
+    public Mono<String> helloProduct() {
+        Mono<String> pres = webClientBuilder.build().get().uri("http://product-service/api/products").retrieve().bodyToMono(String.class);
+        return pres;
+    }
 }
