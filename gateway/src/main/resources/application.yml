@@ -1,6 +1,8 @@
 server:
   port: 8085
 zuul:
+  debug:
+    request: true
   routes:
     product-service:
       path: /api/products/**

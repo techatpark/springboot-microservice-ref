@@ -6,15 +6,17 @@
 package org.springboot.microservice.product;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-@RestController("/api/products")
+@RestController
 public class ProductApiController {
     
-    @GetMapping()
-    public Mono<String> hello() {
-        return Mono.just("I am a Product");
+    @GetMapping("/api/products/{id}")
+    public Mono<String> hello(@PathVariable String id) {
+        return Mono.just("I am a Product " + id);
     } 
      
 //    @PostMapping("/restart/{env}")
