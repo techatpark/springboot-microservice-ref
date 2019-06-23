@@ -3,3 +3,12 @@
 /gateway/target/
 /product-service/target/
 /store-service/target/
+**/target
+*/.settings/*
+.classpath
+.project
+*.class
+*.org.*
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.m2e.core.prefs
+**/bin/*

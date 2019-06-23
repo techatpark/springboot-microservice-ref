@@ -18,6 +18,11 @@ public class ProductApiController {
     public Mono<String> hello(@PathVariable String id) {
         return Mono.just("I am a Product " + id);
     } 
+    
+    @GetMapping("/api/products/myendpoint/{id}")
+    public Mono<String> hello1(@PathVariable String id) {
+        return Mono.just("I am a Product my endpoint" + id);
+    } 
      
 //    @PostMapping("/restart/{env}")
 //    public void restart(@PathVariable("env") String env) {

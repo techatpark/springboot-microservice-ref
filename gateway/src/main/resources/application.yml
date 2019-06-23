@@ -7,6 +7,7 @@ zuul:
     product-service:
       path: /api/products/**
       serviceId: product-service
+      stripPrefix: false
     store-service:
       path: /api/stores/**
       serviceId: store-service  
