@@ -6,17 +6,22 @@
 package com.test.comment.server.controller;
 
 import com.test.comment.server.model.Comment;
+import com.test.comment.server.service.CommentService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/comments/{topic}")
 public class CommentController {
 
+    private final CommentService commentService;
+
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
+    }
+
     @PostMapping
     public Comment postComment(Comment comment) {
-        return comment;
+        return commentService.create(comment);
     }
 
 //    @GetMapping
