@@ -11,10 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableMicroservice
-public class CommentsApplication {
+public class CommentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommentsApplication.class, args);
+		SpringApplication.run(CommentApplication.class, args);
 	}
 
 }

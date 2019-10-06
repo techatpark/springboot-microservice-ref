@@ -1,10 +1,14 @@
 package com.test.comment.server.model;
 
+import java.util.List;
+
 public class Comment {
 
     private String topic;
     private Long id;
     private String message;
+
+    private List<Comment> replies;
 
 
     public Long getId() {
@@ -29,5 +33,13 @@ public class Comment {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public List<Comment> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Comment> replies) {
+        this.replies = replies;
     }
 }

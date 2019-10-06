@@ -6,9 +6,9 @@
 package com.test.comment.server.controller;
 
 import com.test.comment.server.model.Comment;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/comments/{topic}")
@@ -18,5 +18,10 @@ public class CommentController {
     public Comment postComment(Comment comment) {
         return comment;
     }
+
+//    @GetMapping
+//    public List<Comment> list(@PathVariable String topic) {
+//        return null;
+//    }
 
 }
