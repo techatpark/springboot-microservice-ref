@@ -1,4 +1,4 @@
-package com.test.comment.server.model;
+package com.test.comment.model;
 
 import java.util.List;
 

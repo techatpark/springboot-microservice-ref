@@ -1,6 +1,6 @@
-package com.test.comment.server.service;
+package com.test.comment.service;
 
-import com.test.comment.server.model.Comment;
+import com.test.comment.model.Comment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;

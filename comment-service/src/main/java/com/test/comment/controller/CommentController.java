@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.test.comment.server.controller;
+package com.test.comment.controller;
 
-import com.test.comment.server.model.Comment;
-import com.test.comment.server.service.CommentService;
+import com.test.comment.service.CommentService;
+import com.test.comment.model.Comment;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

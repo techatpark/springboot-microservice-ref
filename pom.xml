@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>boot-starter</module>
+        <module>user-service</module>
         <module>comment-service</module>
     </modules>
     <properties>
