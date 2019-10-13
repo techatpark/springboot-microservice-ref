@@ -11,6 +11,11 @@ package com.test.bootstarter.exception;
  */
 public class DatabaseNotAvailableException extends SystemException{
     
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     public DatabaseNotAvailableException(String message, Throwable err)
     {
         super(message,err);

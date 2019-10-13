@@ -11,6 +11,11 @@ package com.test.bootstarter.exception;
  */
 public class BusinessObjectException extends Exception {
     
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     public BusinessObjectException(String message, Throwable err)
     {
         super(message, err);

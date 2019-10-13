@@ -10,6 +10,11 @@ package com.test.bootstarter.exception;
  * @author senthilkumar
  */
 public class ObjectNotFoundException extends BusinessObjectException{
+        
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     
     public ObjectNotFoundException(String message, Throwable err)
     {
