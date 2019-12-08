@@ -16,3 +16,5 @@ The purpose of this project is to identify and use the tools, techniques and tut
 * Circuit Breaker - https://medium.com/@jegasingamjeyanthasingam/circuit-breaker-pattern-for-microservices-eb71569dc44d
 * Webflux Swagger - https://github.com/pgilad/spring-boot-webflux-swagger-starter
 
+#### Utilities
+* Login to Postgress - docker exec -it my_postgres psql -U keycloak -W comment_db password

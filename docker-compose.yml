@@ -6,9 +6,9 @@ services:
     image: "postgres:11"
     container_name: "my_postgres"
     environment:
-      POSTGRES_USER: keycloak
+      POSTGRES_USER: user
       POSTGRES_PASSWORD: password   
-      POSTGRES_MULTIPLE_DATABASES: comment_db,keyclock 
+      POSTGRES_MULTIPLE_DATABASES: comment_db,keyclock_db
     ports:
       - "54320:5432"
     volumes:
