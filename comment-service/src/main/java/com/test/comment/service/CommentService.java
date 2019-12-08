@@ -2,6 +2,7 @@ package com.test.comment.service;
 
 import com.test.comment.model.Comment;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 @Service
 public class CommentService {
@@ -37,6 +39,21 @@ public class CommentService {
     private Comment get(Long id) {
         String query = "SELECT * FROM comment WHERE id = ?";
         return jdbcTemplate.queryForObject(query,new Object[]{id},this::mapRow);
+    }
+
+    public Comment getComment(Long id) {
+        return get(id);
+    }
+
+    public int deleteComment(Long id) {
+        String query = "Delete from comment WHERE id = ?";
+        return jdbcTemplate.update(query,new Object[]{id});
+    }
+
+    public List<Comment> getTopicComments(String topic) {
+        String query = "SELECT * FROM comment WHERE topic = ?";
+        List<Comment> comments = jdbcTemplate.query(query, new Object[] {topic},this::mapRow);
+        return comments;
     }
 
     public Comment mapRow(ResultSet rs, int rowNum) throws SQLException {
