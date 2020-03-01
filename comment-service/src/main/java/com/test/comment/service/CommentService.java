@@ -2,7 +2,6 @@ package com.test.comment.service;
 
 import com.test.comment.model.Comment;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 
@@ -20,44 +19,43 @@ public class CommentService {
 
     private final DataSource dataSource;
 
-    public CommentService(JdbcTemplate jdbcTemplate,DataSource dataSource) {
+    public CommentService(final JdbcTemplate jdbcTemplate, final DataSource dataSource) {
         this.jdbcTemplate = jdbcTemplate;
         this.dataSource = dataSource;
     }
 
-    public Comment create(Comment comment) {
-        SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
-                .withTableName("comment")
+    public Comment create(final Comment comment) {
+        final SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("comment")
                 .usingGeneratedKeyColumns("id");
-        Map<String,Object> map = new HashMap<>();
-        map.put("topic",comment.getTopic());
-        map.put("message",comment.getMessage());
-        Number id = simpleJdbcInsert.executeAndReturnKey(map);
+        final Map<String, Object> map = new HashMap<>();
+        map.put("topic", comment.getTopic());
+        map.put("message", comment.getMessage());
+        final Number id = simpleJdbcInsert.executeAndReturnKey(map);
         return id == null ? null : get(id.longValue());
     }
 
-    private Comment get(Long id) {
-        String query = "SELECT * FROM comment WHERE id = ?";
-        return jdbcTemplate.queryForObject(query,new Object[]{id},this::mapRow);
+    private Comment get(final Long id) {
+        final String query = "SELECT * FROM comment WHERE id = ?";
+        return jdbcTemplate.queryForObject(query, new Object[] { id }, this::mapRow);
     }
 
-    public Comment getComment(Long id) {
+    public Comment getComment(final Long id) {
         return get(id);
     }
 
-    public int deleteComment(Long id) {
-        String query = "Delete from comment WHERE id = ?";
-        return jdbcTemplate.update(query,new Object[]{id});
+    public int deleteComment(final Long id) {
+        final String query = "Delete from comment WHERE id = ?";
+        return jdbcTemplate.update(query, new Object[] { id });
     }
 
-    public List<Comment> getTopicComments(String topic) {
-        String query = "SELECT * FROM comment WHERE topic = ?";
-        List<Comment> comments = jdbcTemplate.query(query, new Object[] {topic},this::mapRow);
+    public List<Comment> getTopicComments(final String topic) {
+        final String query = "SELECT * FROM comment WHERE topic = ?";
+        final List<Comment> comments = jdbcTemplate.query(query, new Object[] { topic }, this::mapRow);
         return comments;
     }
 
-    public Comment mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Comment comment = new Comment();
+    public Comment mapRow(final ResultSet rs, final int rowNum) throws SQLException {
+        final Comment comment = new Comment();
         comment.setId(rs.getLong("id"));
         comment.setMessage(rs.getString("message"));
         comment.setTopic(rs.getString("topic"));
