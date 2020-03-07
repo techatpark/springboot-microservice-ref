@@ -1,26 +1,27 @@
 version: '3.1'
 
 services:
-  es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
-    container_name: es01
+  mysql:
+    image: mysql
+    restart: always
     environment:
-      - discovery.type=single-node
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MULTIPLE_DATABASES: comment_db,user_db
     ports:
-      - 9200:9200
-      - 9300:9300
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
       
   postgres:
     image: "postgres:11"
     container_name: "my_postgres"
     environment:
+      POSTGRES_DB: keyclock_db
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password   
-      POSTGRES_MULTIPLE_DATABASES: comment_db,keyclock_db
     ports:
       - "54320:5432"
-    volumes:
-      - ./initdb:/docker-entrypoint-initdb.d
 
   keycloak:
       image: jboss/keycloak
@@ -28,9 +29,9 @@ services:
         DB_VENDOR: POSTGRES
         DB_ADDR: postgres
         DB_DATABASE: keyclock_db
-        DB_USER: keyclock_db
+        DB_USER: user
         DB_SCHEMA: public
-        DB_PASSWORD: keyclock_db
+        DB_PASSWORD: password
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: Pa55w0rd
         # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
