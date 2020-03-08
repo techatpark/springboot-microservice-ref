@@ -25,17 +25,17 @@ public class CommentService {
     }
 
     public Comment create(final Comment comment) {
-        final SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("comment")
+        final SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("comments")
                 .usingGeneratedKeyColumns("id");
         final Map<String, Object> map = new HashMap<>();
         map.put("topic", comment.getTopic());
-        map.put("message", comment.getMessage());
+        map.put("text", comment.getText());
         final Number id = simpleJdbcInsert.executeAndReturnKey(map);
         return id == null ? null : get(id.longValue());
     }
 
     private Comment get(final Long id) {
-        final String query = "SELECT * FROM comment WHERE id = ?";
+        final String query = "SELECT * FROM comments WHERE id = ?";
         return jdbcTemplate.queryForObject(query, new Object[] { id }, this::mapRow);
     }
 
@@ -44,12 +44,12 @@ public class CommentService {
     }
 
     public int deleteComment(final Long id) {
-        final String query = "Delete from comment WHERE id = ?";
+        final String query = "Delete from comments WHERE id = ?";
         return jdbcTemplate.update(query, new Object[] { id });
     }
 
     public List<Comment> getTopicComments(final String topic) {
-        final String query = "SELECT * FROM comment WHERE topic = ?";
+        final String query = "SELECT * FROM comments WHERE topic = ?";
         final List<Comment> comments = jdbcTemplate.query(query, new Object[] { topic }, this::mapRow);
         return comments;
     }
@@ -57,7 +57,7 @@ public class CommentService {
     public Comment mapRow(final ResultSet rs, final int rowNum) throws SQLException {
         final Comment comment = new Comment();
         comment.setId(rs.getLong("id"));
-        comment.setMessage(rs.getString("message"));
+        comment.setText(rs.getString("text"));
         comment.setTopic(rs.getString("topic"));
         return comment;
     }

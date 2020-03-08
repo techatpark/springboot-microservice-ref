@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Comment {
 
-    private String topic;
     private Long id;
-    private String message;
+    private String text;
+    private String topic;
 
     private List<Comment> replies;
 
@@ -27,13 +27,15 @@ public class Comment {
         this.topic = topic;
     }
 
-    public String getMessage() {
-        return message;
+    public String getText() {
+        return text;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setText(String text) {
+        this.text = text;
     }
+    
+    
 
     public List<Comment> getReplies() {
         return replies;
