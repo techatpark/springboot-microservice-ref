@@ -9,16 +9,15 @@ import java.util.List;
 
 import com.test.comment.model.Comment;
 import com.test.comment.service.CommentService;
+import io.swagger.annotations.ApiOperation;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/comments/{topic}")
+@RequestMapping("api/comments")
 public class CommentController {
 
     private final CommentService commentService;
@@ -27,26 +26,19 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @PostMapping
-    public Comment postComment(Comment comment) {
+    @ApiOperation(value = "Post comment for a topic") 
+    @RequestMapping(value = "/{topic}", method = RequestMethod.POST)
+    public Comment postComment(@PathVariable String topic) {
+        Comment comment = new Comment();
+        comment.setTopic(topic);
         return commentService.create(comment);
     }
 
-    @GetMapping
-    public List<Comment> getTopicComments(@PathVariable String topic) {
-        List<Comment> list = commentService.getTopicComments(topic);
+    @RequestMapping(value = "/{topic}", method = RequestMethod.GET)
+    public List<Comment> getCommentsByTopic(@PathVariable String topic) {
+        List<Comment> list = commentService.getCommentsByTopic(topic);
         return list;
     }
 
-    @GetMapping("/{id}")
-    public Comment getComment(@PathVariable Long id) {
-        Comment comment = commentService.getComment(id);
-        return comment;
-    }
-    @DeleteMapping("/{id}")
-    public int deleteComment(@PathVariable Long id) {
-        int affectedRows = commentService.deleteComment(id);
-        return affectedRows; 
-    }
 
 }

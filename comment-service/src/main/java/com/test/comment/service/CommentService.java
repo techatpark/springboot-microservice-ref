@@ -48,7 +48,7 @@ public class CommentService {
         return jdbcTemplate.update(query, new Object[] { id });
     }
 
-    public List<Comment> getTopicComments(final String topic) {
+    public List<Comment> getCommentsByTopic(final String topic) {
         final String query = "SELECT * FROM comments WHERE topic = ?";
         final List<Comment> comments = jdbcTemplate.query(query, new Object[] { topic }, this::mapRow);
         return comments;
