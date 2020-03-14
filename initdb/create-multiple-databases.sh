@@ -16,7 +16,14 @@ EOSQL
 if [ -n "$MULTIPLE_DATABASES" ]; then
 	echo "Multiple database creation requested: $MULTIPLE_DATABASES"
 	for db in $(echo $MULTIPLE_DATABASES | tr ',' ' '); do
-		create_user_and_database $db
+		create_user_and_database $db		
+		FILE=/docker-entrypoint-initdb.d/load_scripts/$db.sql
+		if [[ -f "$FILE" ]]; then
+			echo "  Creating user and database dump '$db'"
+			mysql -u$db -p$db $db < $FILE
+		fi
+
+		
 	done
 	echo "Multiple databases created"
 fi
