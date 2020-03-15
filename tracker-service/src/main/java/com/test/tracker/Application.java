@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.test.comment;
+package com.test.tracker;
 
 import com.test.bootstarter.annotations.EnableMicroservice;
 import org.springframework.boot.SpringApplication;
@@ -11,10 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableMicroservice
-public class CommentApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommentApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

@@ -14,6 +14,7 @@
         <module>boot-starter</module>
         <module>user-service</module>
         <module>comment-service</module>
+        <module>tracker-service</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
