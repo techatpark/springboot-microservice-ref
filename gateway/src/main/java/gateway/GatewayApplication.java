@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableConfigurationProperties(UriConfiguration.class)
 @RestController
-public class Application {
+public class GatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(GatewayApplication.class, args);
 	}
 
 	// tag::route-locator[]
